@@ -61,9 +61,11 @@ Um lead não influencia nenhuma cadeia de funcionalidades.
 | Imobiliária ("idimobiliaria") | Informa a imobiliária (ID) que será vinculada ao lead. | Integer | Não | 10 | 
 | Data de Associação da Imobiliária ("data_associacao_imobiliaria") | Informa a data em que a imobiliária foi vinculada ao lead. | Datetime | Não | - | 
 | Corretor ("idcorretor") | Informa o corretor (ID) que será vinculado ao lead. | Integer | Não | 10 | 
+| Corretor ("email_corretor") | Informa o e-mail do corretor que será vinculado ao lead. Uma alternativa para caso o usuário não saiba qual id de corretor passar. | String | Não | 100 | 
 | Data de Associação do Corretor ("data_associacao_corretor") | Informa a data em que o corretor foi vinculado ao lead. | Datetime | Não | - | 
 | Situação ("idsituacao") | Informa a situação (ID) do lead. | Integer | Não | 10 |
 | Responsável ("idusuario") | Informa o usuário administrativo que será vinculado ao lead como responsável. | Integer | Não | 10 | 
+| Responsável ("email_gestor") | Informa o e-mail do usuário administrativo que será vinculado ao lead como responsável. Uma alternativa para caso o usuário não saiba qual id de usuário administrativo passar. | String | Não | 100 | 
 | Origem ("origem") | Informa a origem (ID) do lead. | String | Não | 2 | Opções - "ND" - Não Definido / "GE" - Painel Gestor / "CO" - Painel Corretor / "IM" - Painel Imobiliária / "FB" - Facebook Ads / "SI" - WebSite / "GO' - Google / "CH" - Chat Online / "TD" - Tráfego Direto / "MP" - Mídia Paga / "BO" - Busca Orgânica / "EM" - Email / "RF" - Referência / "SC" - Social / "DP" - Display / "OP" - Outras publicidades / "OU" - Outros / "UK" - Desconhecido. Caso não seja enviado no JSON da requisição, recebe o valor padrão do sistema (o valor do campo “modulo”).
 | Mídia ("midia") | Informa o código da mídia que está gerando o lead. | Integer | Não | 0 | Ex.: gpc, ads
 | Data do Vencimento ("data_vencimento") | Informa a data de vencimento do lead de acordo com a situação atual. | Datetime | Não | 0 | Deve ser enviado no formato BR.
@@ -214,5 +216,3 @@ Ao cadastrar um lead pela API, pode ser enviado o campo “idpdv” no JSON da r
 Ao editar um lead pela API, pode ser enviado o campo “idpdv” no JSON da requisição. Caso seja enviado, as situações possíveis são: (1) se o PDV está associado à imobiliária do lead ou a algum empreendimento do lead, será cadastrado no lead, do contrário não; (2) caso não exista nem imobilária nem empreendimentos associados ao lead, o PDV será cadastrado no lead; (3) caso seja enviado o mesmo “idpdv” nada será alterado.
 
 Caso um PDV não possua associação com uma imobiliária nem com algum empreendimento, ele deverá ser exibido em todos os painéis.
-
-gtg
