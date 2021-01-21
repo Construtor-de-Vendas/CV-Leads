@@ -34,7 +34,7 @@ Um lead não influencia nenhuma cadeia de funcionalidades.
 ## 2.1 Cabeçalho
 | Nome | Descrição | Tipo | Obrg. | Tam. |
 | ------ | ------ | ------ | ------ | ------ |
-| E-mail ("email") | Informa o endereço de e-mail de login do usuário que executa a requisição (módulo). | String | Sim | 100 |
+| E-mail ("email") | Informa o endereço de e-mail de login do usuário que executa a requisição (módulo). | String | Não | 100 |
 | Token ("token") | Informa o token ativo do usuário que executa a requisição (módulo). | String | Sim | 128 |
 
 **Exemplo:**
