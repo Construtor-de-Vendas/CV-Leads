@@ -34,7 +34,6 @@ Um lead não influencia nenhuma cadeia de funcionalidades.
 ## 2.1 Cabeçalho
 | Nome | Descrição | Tipo | Obrg. | Tam. |
 | ------ | ------ | ------ | ------ | ------ |
-| E-mail ("email") | Informa o endereço de e-mail de login do usuário que executa a requisição (módulo). | String | Não | 100 |
 | Token ("token") | Informa o token ativo do usuário que executa a requisição (módulo). | String | Sim | 128 |
 
 **Exemplo:**
@@ -74,7 +73,7 @@ Um lead não influencia nenhuma cadeia de funcionalidades.
 | Conversão ("conversao") | Informa o nome da fonte de uma nova entrada de um lead existente. | String | Não | 100 |
 | Data da Conversão ("data_cad_conversao") | Informa a data que a conversão do lead foi cadastrada. | Datetime | Não | 0 | Deve ser enviado no formato BR.
 | Campos Adicionais ("campos_adicionais") | Informa o(s) campo(s) extra(s) e seu(s) respectivo(s) valor(es), cadastrado(s) por uma construtora. | String / Text | Não | 100 |
-| Interações ("interacoes") | Informa as interações (anotação, ligação, e-mail, SMS, WhatsApp) que foram efetuadas no lead. | String / Text | Não | 1 / 0 | Array de arrays contendo os campos “tipo” e “descricao” para cada interação. Opções - “A” (anotação) / “L” (ligação) / “E” (e-mail) / “S” (SMS) / “W” (WhatsApp).
+| Interações ("interacoes") | Informa as interações (anotação, ligação, e-mail, SMS, WhatsApp) que foram efetuadas no lead. Pode conter uma array com informações de tarefas agendadas para essa interação | String / Text | Não | 1 / 0 | Array de arrays contendo os campos: “tipo” : que tem as opções{ - “A” (anotação) / “L” (ligação) / “E” (e-mail) / “S” (SMS) / “W” (WhatsApp)} , “descricao”:  para cada interação, "tarefa" : uma array com os seguintes campos:  "nome", "data", "situacao" com as opções { "P" (pendente) / "C" (concluído) / "A" (Em andamento) / "CA" (cancelado)}, "prioridade" com as opções { "A" (alta) / "N" (normal)  / "B" (baixa), "tipo_responsavel" com as opções { "G" (gestor), "C" (corretor), "I" (imobiliária), "P" (pdv), "idresponsavel".
 
 **Exemplo:**
 ```sh
@@ -99,12 +98,28 @@ Um lead não influencia nenhuma cadeia de funcionalidades.
         "0": 
         { 
             "tipo" : "L",
-            "descricao" : "Ligar para Alfred Ramos"
+            "descricao" : "Ligar para Alfred Ramos",
+            "tarefa":  {
+                  "nome": "Tarefa ligacao cadastrada por API",
+                  "data": "2021-02-06 11:00",
+                  "situacao": "A",
+                  "prioridade": "A",
+                  "tipo_responsavel": "G",
+                  "idresponsavel": 170
+            }
         },
         "1": 
         { 
             "tipo" : "W",
-            "descricao" : "Teste de mensagem pelo WhatsApp"
+            "descricao" : "Teste de mensagem pelo WhatsApp",
+             "tarefa":  {
+                  "nome": "Tarefa mensagem WhatsApp cadastrada por API",
+                  "data": "2021-02-06 11:00",
+                  "situacao": "A",
+                  "prioridade": "A",
+                  "tipo_responsavel": "G",
+                  "idresponsavel": 170
+            }
         }
     }
 }
@@ -155,6 +170,8 @@ Código ("codigo") | Retorna o response code referente ao resultado da ação ef
     "codigo": 200  
 }
 ```
+**Observação:** 
+Os campos que não são obrigatórios na resposta da requisição estão marcados com *.
 
 # 3 ESPECIFICAÇÕES DAS AÇÕES
 
