@@ -49,6 +49,7 @@ Um lead não influencia nenhuma cadeia de funcionalidades.
 | Ação ("acao") | Informa o tipo de ação que deve ser executada “cadastrar” ou “alterar”. | String | Sim | 100 |
 | Nome ("nome") | Informa o nome do cliente do lead. | String | Sim | 100 |
 | E-mail ("email") | Informa o endereço de e-mail cadastrado no lead. | String | Sim | 100 |
+| Modulo ("modulo") | Tratar a origem como vindo de um dos painéis caso não venha nenhuma outra origem na API. | String | Sim | 100 |  Para que o link de resposta da requisição gerado seja válido, deve ser passado o campo modulo.
 | Telefone ("telefone") | Informa o número de telefone cadastrado no lead. | String | Não | 15 | Restrição numérica e máscara para campo de telefone.
 | Facebook ("facebook") | Informa perfil da rede social do cliente ou associado. | String | Não | 100 |
 | Twitter ("twitter") | Informa perfil da rede social do cliente ou associado. | String | Não | 100 |
@@ -81,6 +82,7 @@ Um lead não influencia nenhuma cadeia de funcionalidades.
     "acao": "salvar",
     "nome": "Nivaldo Oliva II",
     "email": "nivaldoolivasegundo@gmail.com",
+    "modulo": "gestor",
     "telefone": "(79) 98833-0011",
     "permitir_alteracao":"true",
     "idempreendimento": 
