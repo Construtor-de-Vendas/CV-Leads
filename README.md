@@ -75,6 +75,7 @@ Um lead não influencia nenhuma cadeia de funcionalidades.
 | Data da Conversão ("data_cad_conversao") | Informa a data que a conversão do lead foi cadastrada. | Datetime | Não | 0 | Deve ser enviado no formato BR.
 | Campos Adicionais ("campos_adicionais") | Informa o(s) campo(s) extra(s) e seu(s) respectivo(s) valor(es), cadastrado(s) por uma construtora. | String / Text | Não | 100 |
 | Interações ("interacoes") | Informa as interações (anotação, ligação, e-mail, SMS, WhatsApp) que foram efetuadas no lead. Pode conter uma array com informações de tarefas agendadas para essa interação | String / Text | Não | 1 / 0 | Array de arrays contendo os campos: “tipo” : que tem as opções{ - “A” (anotação) / “L” (ligação) / “E” (e-mail) / “S” (SMS) / “W” (WhatsApp)} , “descricao”:  para cada interação, "tarefa" : uma array com os seguintes campos:  "nome", "data", "situacao" com as opções { "P" (pendente) / "C" (concluído) / "A" (Em andamento) / "CA" (cancelado)}, "prioridade" com as opções { "A" (alta) / "N" (normal)  / "B" (baixa), "tipo_responsavel" com as opções { "G" (gestor), "C" (corretor), "I" (imobiliária), "P" (pdv), "idresponsavel".
+| Produto ("idproduto") | Informa o(s) ID(S) do(s) Produto(s) do lead. Pode conter um array com os ids dos produtos a serem associados ao lead | Integer | Não | - |
 
 **Exemplo:**
 ```sh
@@ -123,7 +124,8 @@ Um lead não influencia nenhuma cadeia de funcionalidades.
                   "idresponsavel": 170
             }
         }
-    }
+    },
+    "idproduto": [1,2]
 }
 ```
 
