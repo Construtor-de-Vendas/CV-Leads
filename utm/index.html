@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTM Parameters</title>
+</head>
+<body>
+
+    <h1>UTM Parameters</h1>
+
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        let utm_source = urlParams.get('utm_source');
+        let utm_medium = urlParams.get('utm_medium');
+        let utm_campaign = urlParams.get('utm_campaign');
+
+        if(utm_source){
+            
+            setCookie("utm_source", utm_source, 360);
+            setCookie("utm_medium", utm_medium, 360);
+            setCookie("utm_campaign", utm_campaign, 360);
+
+            checkReferrer();
+
+        }
+
+        //Check se existe url anterior e se o domínio é diferente do atual
+        function checkReferrer(){
+            let referrer = document.referrer.split( '/' );
+            let currentURL = document.location.href.split( '/' );
+
+            if(referrer[2] && referrer[2] != currentURL[2]){
+                setCookie("referrer", referrer[2], 360);
+            }
+        }
+
+
+        //Salva Coockie
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toGMTString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        //Retorna Cookie
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        //Deleta Cookie
+        function deleteCookie(cname) {   
+            document.cookie = cname+'=; Max-Age=-99999999;';  
+        }
+
+    </script>
+    
+</body>
+</html>
