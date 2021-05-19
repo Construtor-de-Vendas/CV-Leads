@@ -19,22 +19,24 @@
         let utm_campaign = urlParams.get('utm_campaign');
 
         if(utm_source){
-            
-            setCookie("utm_source", utm_source, 360);
-            setCookie("utm_medium", utm_medium, 360);
-            setCookie("utm_campaign", utm_campaign, 360);
-
-            checkReferrer();
+           
+            setCookie("midia", utm_source, 360);
+            setCookie("origem", utm_medium, 360);
+            setCookie("conversao", utm_campaign, 360);
 
         }
+
+        checkReferrer();
 
         //Check se existe url anterior e se o domínio é diferente do atual
         function checkReferrer(){
             let referrer = document.referrer.split( '/' );
             let currentURL = document.location.href.split( '/' );
 
-            if(referrer[2] && referrer[2] != currentURL[2]){
-                setCookie("referrer", referrer[2], 360);
+            if(referrer[2] != undefined && referrer[2] != currentURL[2]){
+                setCookie("prev-url", referrer[2], 360);
+            }else{
+                setCookie("prev-url", "Intenção Direta", 360);
             }
         }
 
